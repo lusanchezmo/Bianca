@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import BtnApto from './BtnApto';
 
 function Aptos() {
 
@@ -36,7 +37,7 @@ function Aptos() {
             ) : (
             aptos.map((apto) => // se recorre el arreglo para mostrar los elementos
             (
-                <button>{apto.apto}</button>   
+                <BtnApto apto={apto} />
             )
             )
         ))

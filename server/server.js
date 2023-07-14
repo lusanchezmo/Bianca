@@ -17,7 +17,7 @@ app.get('/',(req,res) => {
 
     con.connect(function (err) {    // se abre la conexion con la db
         if (err) throw err;         // validacion de apertura
-        con.query("select apto from ingruma2;", function (err, result, fields) { // se envía la petición a DB
+        con.query("select apto,idapto from ingruma2;", function (err, result, fields) { // se envía la petición a DB
 
             if (err) throw err;  // valida peticion enviada corrrectamente
             res.send(JSON.stringify(result));    // se imprime en pantalla el resultado de la consulta

@@ -26,5 +26,54 @@ app.get('/',(req,res) => {
     });
 });
 
+app.get('/getAptoById', (req, res) => {
+
+  var conn = require('./db.js');
+  var con = conn.con(); 
+  let id = req.query.idApto;
+  con.connect(function (err) {
+    if (err) throw err; 
+    con.query(`select * from ingruma2 where idapto='${id}';`, [id], function (err, result, fields) { // se envía la petición a DB
+      if (err) throw err; // valida peticion enviada corrrectamente
+      res.send(JSON.stringify(result)); // se imprime en pantalla el resultado de la consulta
+    });
+  });
+});
+
+app.get('/getAptoById3', (req, res) => {
+
+  var conn = require('./db.js');
+  var con = conn.con(); 
+  let id = req.query.idApto;
+  let nuevoNombre = id.query.changeName;
+  con.connect(function (err) {
+    if (err) throw err; 
+    con.query(`update ingruma2 set apto = ${nuevoNombre} where idapto = '${id}';`, [id], function (err, result, fields) { // se envía la petición a DB
+      if (err) throw err; // valida peticion enviada corrrectamente
+      console.log('esta entrando');
+      res.send('correcto'); // se imprime en pantalla el resultado de la consulta
+    });
+  });
+});
+
+app.put('/changeName/:id/:newName', (req,res) => {
+  const {id,newName} = req.params
+
+  var conn = require('./db.js');
+  var con = conn.con();   
+
+  con.connect(function (err) {
+    if (err) throw err; 
+    con.query(`update ingruma2 set apto = ${newName} where idapto = '${id}';`, [id], function (err, result, fields) { // se envía la petición a DB
+      if (err) throw err; // valida peticion enviada corrrectamente
+      console.log('esta entrando');
+      res.send('correcto'); // se imprime en pantalla el resultado de la consulta
+    });
+  });
+
+  
+})
+
+
 app.listen(5000);
 console.log('server on port 5000');

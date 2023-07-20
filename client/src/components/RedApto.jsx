@@ -4,8 +4,32 @@ import React, {useState, useEffect } from 'react';
 function RedApto() {
     const params = new URLSearchParams(window.location.search);
     const id = params.get('idApto');   // <-- obtiene el id del apto
+    
+    const [dato,setDato] = useState('');
+    const [productoId,setProductoId] = useState('');
+
+    if(dato == 0 || productoId == 0){
+        console.log('cargando...');
+    }else{
+        changeProductAmount();
+        function changeProductAmount() {
+            const options = {
+                method: "PUT"
+            };
+            let url = new URL("http://localhost:5000/changeProductAmount/"+id+"/"+productoId+"/"+dato);
+            fetch(url, options) // se hace la consulta 
+                .then(response => response.text()) // se obtiene el cuerpo de la respuesta
+                .then(data => {
+                  
+                });
+        }
+        console.log(dato,productoId);
+    }
+
+    
 
     const [infoApto,setinfoApto] = useState([]);
+    
     // Obtiene la info de apto
     function getInfoApto() {
         const options = {
@@ -66,7 +90,7 @@ function RedApto() {
             <button>Eliminar</button>
             <div>
                 <p>{(
-                    infoApto === 0 ? (
+                    infoApto == 0 ? (
                     <p>Cargando ...</p> // en caso que no haya cargado 
                 ) : (
                 infoApto.map((apto) => // se recorre el arreglo para mostrar los elementos
@@ -92,34 +116,31 @@ function RedApto() {
                 
             </div>
 
-            <div className='contenedor' style={{display:'flex'}}>
-            {/* <div className='contenedorProductos'>
+            {/* Apartado de la TABLA */}
+            <div className='contenedorProductos'>
             {(
-                infoApto === 0 ? (
+                infoApto == 0 ? (
                     <p>Cargando ...</p> // en caso que no haya cargado 
                 ) : (
                     Object.keys(infoApto[0]).map((producto) => // se recorre el arreglo para mostrar los elementos
                 (
-                    <p>{producto}</p>
+                    <form style={{display:'flex'}}>
+                        <p>{producto}</p>
+                        <input
+                            type='number'
+                            name='dato'
+                            placeholder={infoApto[0][producto]}
+                            onChange={ev => {
+                                setDato(ev.target.value); 
+                                setProductoId(producto);
+                            }}
+                            style={{display:'block'}}
+                        ></input>
+                    </form>
                 )
                 )
             ))
             }
-            </div>
-
-            <div className='contenedorcantidadProducto'>
-            {(
-                infoApto === 0 ? (
-                    <p>Cargando ...</p> // en caso que no haya cargado 
-                ) : (
-                    Object.values(infoApto[0]).map((producto) => // se recorre el arreglo para mostrar los elementos
-                (
-                    <p>{producto}</p>
-                )
-                )
-            ))
-            }
-            </div> */}
             </div>
 
         </div>

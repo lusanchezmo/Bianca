@@ -2,15 +2,21 @@
 import React, {useState, useEffect } from 'react';
 
 function RedApto() {
+    // Obtenemos el id del apartamento de la URL
     const params = new URLSearchParams(window.location.search);
     const id = params.get('idApto');   // <-- obtiene el id del apto
-    
-    const [dato,setDato] = useState('');
-    const [productoId,setProductoId] = useState('');
 
+    // Declaramos las variables que vamos a modificar
+    // en este caso la cantidad de producto y el producto
+    const [dato,setDato] = useState('');                // dato <-- cantidad de producto
+    const [productoId,setProductoId] = useState('');    // productoId <-- producto a mofificar cantidad
+
+    // Condicional: Si los datos anteriormente declarados estan vacios,
+    // entonces no haga nada, de lo contrario actualice la informacion en la base de datos
     if(dato == 0 || productoId == 0){
         console.log('cargando...');
     }else{
+        // Actualiza la cantidad de producto en la base de datos
         changeProductAmount();
         function changeProductAmount() {
             const options = {
@@ -23,14 +29,15 @@ function RedApto() {
                   
                 });
         }
-        console.log(dato,productoId);
+        console.log(dato,productoId);  // imprimimos en la consola del navegador
     }
 
     
-
+    // Arreglo con la informacion del apartamento 
+    // que estamos modificando para la redistribucion 
     const [infoApto,setinfoApto] = useState([]);
-    
-    // Obtiene la info de apto
+    // Obtiene la info del apto
+    // ¡ SIEMPRE SE EJECUTA AL INICIO PARA OBTENER NOMBRE DEL APTO !
     function getInfoApto() {
         const options = {
             method: "GET"
@@ -44,19 +51,19 @@ function RedApto() {
               setinfoApto(json);             // funcion del useState
             });
     }
-
     // se usa useEffect((),[]) sin parametros para solo hacer una vez la consulta a la BD, 
     // no se debe hacer cada vez que se renderice
     useEffect(() => {
         getInfoApto();
       }, []);
 
-    const [mostrarDiv1, setMostrarDiv1] = useState(false);    // muestra el div para cambiar el nombre
 
+    // TODA ESTA FUNCION ES PARA MODIFICAR EL NOMBRE DEL APTO
+    // Este div se muestra solo si damos click en modificar el nombre del apto
+    const [mostrarDiv1, setMostrarDiv1] = useState(false);    // muestra el div para cambiar el nombre
     const toggleDiv1 = () => {                                // intercambia si se da click
         setMostrarDiv1(!mostrarDiv1);
     };
-
     const [nuevoNombre, setNuevoNombre] = useState('');       // nuevoNombre <-- se almacena el nuevo nombre
     const actualizarNombre = () => {
         changeName();         // <-- llama a la API que cambia el nombre en la bd
@@ -85,8 +92,29 @@ function RedApto() {
         actualizarNombre();
      };
 
+     if(infoApto==0){
+        console.log('');
+    }else{
+        infoApto.forEach(element => delete element.id);
+        infoApto.forEach(element => delete element.idapto);
+    }
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          // Puedes enfocar en otro campo o realizar alguna otra acción
+          // cuando se presione la tecla Enter en el último campo.
+        }
+      };
+
+
+
+
+
+
     return(
         <div className="redApto">
+
+            {/* Apartado de nombre del apto y modificar nombre */}
             <button>Eliminar</button>
             <div>
                 <p>{(
@@ -116,7 +144,7 @@ function RedApto() {
                 
             </div>
 
-            {/* Apartado de la TABLA */}
+            {/* Apartado de la TABLA para la redistribucion*/}
             <div className='contenedorProductos'>
             {(
                 infoApto == 0 ? (
@@ -132,9 +160,9 @@ function RedApto() {
                             placeholder={infoApto[0][producto]}
                             onChange={ev => {
                                 setDato(ev.target.value); 
-                                setProductoId(producto);
+                                setProductoId(producto);    // productoId <-- nombre del producto
                             }}
-                            style={{display:'block'}}
+                            onKeyPress={handleKeyPress}
                         ></input>
                     </form>
                 )

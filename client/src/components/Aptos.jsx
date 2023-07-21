@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import BtnApto from './BtnApto';
+import { Link } from "react-router-dom";
 
 function Aptos() {
 
@@ -44,6 +45,10 @@ function Aptos() {
 
         }
       </div>
+      <h2>Hacer redistribucion</h2>
+      <Link to='/redistribution'>
+        <button>Redistribution</button>
+      </Link>
     </div>
   );
 }

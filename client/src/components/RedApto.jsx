@@ -1,5 +1,6 @@
 
 import React, {useState, useEffect } from 'react';
+import DeleteApto from './DeleteApto';
 
 function RedApto() {
     // Obtenemos el id del apartamento de la URL
@@ -107,6 +108,23 @@ function RedApto() {
       };
 
 
+      function deleteApto() {
+        const options = {
+            method: "DELETE"
+        };
+        let url = new URL("http://localhost:5000/deleteApto/"+id);
+        fetch(url, options) // se hace la consulta 
+            .then(response => response.text()) // se obtiene el cuerpo de la respuesta
+            .then(data => {
+            });
+    }
+
+    const [estadoDialog, setEstadoDialog] = useState(false);
+    const mostrarDeleteApto = () => {
+        setEstadoDialog(!estadoDialog);
+    }
+
+
 
 
 
@@ -115,7 +133,8 @@ function RedApto() {
         <div className="redApto">
 
             {/* Apartado de nombre del apto y modificar nombre */}
-            <button>Eliminar</button>
+            {estadoDialog && <DeleteApto mostrarDeleteApto={mostrarDeleteApto} />}
+            <button onClick={() => (mostrarDeleteApto())} >Eliminar</button>
             <div>
                 <p>{(
                     infoApto == 0 ? (

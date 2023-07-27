@@ -99,6 +99,19 @@ app.post('/addApto/:nombre/:torre/:ingruma', async (req, res) => {
   }
 });
 
+app.delete('/deleteApto/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const result = await pool.query(`delete from ingruma2 where idapto = '${id}';`);
+    console.log('esta eliminando');
+    res.send('correcto');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error en la consulta');
+  }
+});
+
 
 app.listen(PORT);
 console.log("Server on port ", PORT)

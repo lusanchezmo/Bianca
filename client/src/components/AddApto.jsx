@@ -1,16 +1,19 @@
 import { useState, useEffect } from "react";
+import { useParams } from 'react-router-dom';
 
 function AddApto() {
 
     const [nombre, setNombre] = useState('');
     const [torre, setTorre] = useState('');
-    const [ingruma, setIngruma] = useState('');
+    const [numIngruma, setNumIngruma] = useState('');
+
+    let { ingruma } = useParams();
     
     function enviarDatos() {
         const options = {
             method: "POST"
         };
-        let url = new URL("http://localhost:5000/addApto/"+nombre+"/"+torre+"/"+ingruma);
+        let url = new URL("http://localhost:5000/addApto/"+nombre+"/"+torre+"/"+numIngruma+"/"+ingruma);
         fetch(url, options) // se hace la consulta 
             .then(response => response.text()) // se obtiene el cuerpo de la respuesta
             .then(data => {
@@ -36,7 +39,7 @@ function AddApto() {
             <input 
                 type="number" 
                 name="ingruma"
-                onChange={ev => {setIngruma(ev.target.value)}} />
+                onChange={ev => {setNumIngruma(ev.target.value)}} />
             <input type="submit" value="Listo" onClick={enviarDatos} />
         </form>
     )

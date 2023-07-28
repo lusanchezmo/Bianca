@@ -1,11 +1,15 @@
 
 import React, {useState, useEffect } from 'react';
 import DeleteApto from './DeleteApto';
+import { useParams } from 'react-router-dom';
 
 function RedApto() {
     // Obtenemos el id del apartamento de la URL
     const params = new URLSearchParams(window.location.search);
     const id = params.get('idApto');   // <-- obtiene el id del apto
+
+    //INGRUMA
+    let { ingruma } = useParams()
 
     // Declaramos las variables que vamos a modificar
     // en este caso la cantidad de producto y el producto
@@ -23,7 +27,7 @@ function RedApto() {
             const options = {
                 method: "PUT"
             };
-            let url = new URL("http://localhost:5000/changeProductAmount/"+id+"/"+productoId+"/"+dato);
+            let url = new URL("http://localhost:5000/changeProductAmount/"+id+"/"+productoId+"/"+dato+"/"+ingruma);
             fetch(url, options) // se hace la consulta 
                 .then(response => response.text()) // se obtiene el cuerpo de la respuesta
                 .then(data => {
@@ -41,9 +45,9 @@ function RedApto() {
     // ¡ SIEMPRE SE EJECUTA AL INICIO PARA OBTENER NOMBRE DEL APTO !
     function getInfoApto() {
         const options = {
-            method: "GET"
+            method: "POST"
         };
-        let url = new URL("http://localhost:5000/getAptoById?idApto="+id);
+        let url = new URL("http://localhost:5000/getAptoById/"+id+"/"+ingruma);
         fetch(url, options) // se hace la consulta 
             .then(response => response.text()) // se obtiene el cuerpo de la respuesta
             .then(data => {
@@ -75,7 +79,7 @@ function RedApto() {
         const options = {
             method: "PUT"
         };
-        let url = new URL("http://localhost:5000/changeName/"+id+"/"+nuevoNombre);
+        let url = new URL("http://localhost:5000/changeName/"+id+"/"+nuevoNombre+"/"+ingruma);
         fetch(url, options) // se hace la consulta 
             .then(response => response.text()) // se obtiene el cuerpo de la respuesta
             .then(data => {
@@ -107,18 +111,6 @@ function RedApto() {
         }
       };
 
-
-      function deleteApto() {
-        const options = {
-            method: "DELETE"
-        };
-        let url = new URL("http://localhost:5000/deleteApto/"+id);
-        fetch(url, options) // se hace la consulta 
-            .then(response => response.text()) // se obtiene el cuerpo de la respuesta
-            .then(data => {
-            });
-    }
-
     const [estadoDialog, setEstadoDialog] = useState(false);
     const mostrarDeleteApto = () => {
         setEstadoDialog(!estadoDialog);
@@ -128,6 +120,9 @@ function RedApto() {
 
 
 
+
+
+    
 
     return(
         <div className="redApto">

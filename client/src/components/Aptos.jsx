@@ -2,11 +2,18 @@ import React, { useState, useEffect } from 'react';
 import BtnApto from './BtnApto';
 import AddApto from './AddApto';
 import { Link } from "react-router-dom";
+import { useParams } from 'react-router-dom';
 
 function Aptos() {
 
+  //INGRUMA
+  let { ingruma } = useParams()
+  console.log(ingruma);
+
   //Array con los apartamentos
   const [aptos,setAptos] = useState([]);
+
+  //
   const [estadoDialog, setEstadoDialog] = useState(false);
   const mostrarAddApto = () => {
     setEstadoDialog(!estadoDialog);
@@ -14,9 +21,9 @@ function Aptos() {
 
   function getAptos() {
     const options = {
-      method: "GET"
+      method: "POST"
     };
-    let url = new URL("http://localhost:5000");
+    let url = new URL("http://localhost:5000/"+ingruma);
     fetch(url, options) // se hace la consulta 
       .then(response => response.text()) // se obtiene el cuerpo de la respuesta
       .then(data => {
@@ -35,7 +42,9 @@ function Aptos() {
     <div className="App">
        {estadoDialog && <AddApto mostrarAddApto={mostrarAddApto} />}
       <h1>Redistribución</h1>
-      <button>Productos</button>
+      <Link to='/productos' > 
+        <button>Productos</button>
+      </Link>
       <h2>Aptos</h2>
       <div>
         {
@@ -53,7 +62,7 @@ function Aptos() {
       <div><button onClick={() => (mostrarAddApto())}>+</button></div>
       </div>
       <h2>Hacer redistribucion</h2>
-      <Link to='/redistribution'>
+      <Link to={{pathname: `/redistribution/${ingruma}`}}>
         <button>Redistribution</button>
       </Link>
     </div>

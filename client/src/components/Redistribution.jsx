@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 function Redistribution() {
 
+    // INGRUMA
+    let { ingruma } = useParams();
     const [aptos,setAptos] = useState([]);
 
     function getAptos() {
         const options = {
             method: "GET"
         };
-        let url = new URL("http://localhost:5000/redistributionI2");
+        let url = new URL("http://localhost:5000/redistribution/"+ingruma);
         fetch(url, options) // se hace la consulta 
             .then(response => response.text()) // se obtiene el cuerpo de la respuesta
             .then(data => {

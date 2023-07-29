@@ -42,7 +42,7 @@ function Aptos() {
     <div className="App">
        {estadoDialog && <AddApto mostrarAddApto={mostrarAddApto} />}
       <h1>Redistribución</h1>
-      <Link to='/productos' > 
+      <Link to={{pathname: `/${ingruma}/productos`}} > 
         <button>Productos</button>
       </Link>
       <h2>Aptos</h2>

@@ -15,7 +15,7 @@ function App() {
         <Route path='/:ingruma' element={<Aptos/>} />
         <Route path='/:ingruma/redapto' element={<RedApto/>} />
         <Route path='/redistribution/:ingruma' element={<Redistribution/>} />
-        <Route path='/productos' element={<Products/>} />
+        <Route path=':ingruma/productos' element={<Products/>} />
         <Route path='*' element={<NotFound />} />
       </Routes>
     </BrowserRouter>

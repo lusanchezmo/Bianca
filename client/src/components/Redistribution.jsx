@@ -53,11 +53,14 @@ function Redistribution() {
         aptosProductos.push(aptoProducto)
     })
     
+    
     // Algoritmo de redistribucion 
     let total=0
     for (let sentinela = 0; sentinela < aptosProductos.length; sentinela++){
         total+=aptosProductos[sentinela][1]
+        console.log(total);
     }
+    
     let adecuado=Math.floor(total/aptosProductos.length)
     console.log(adecuado);
 

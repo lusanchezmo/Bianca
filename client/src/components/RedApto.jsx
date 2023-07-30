@@ -2,6 +2,7 @@
 import React, {useState, useEffect } from 'react';
 import DeleteApto from './DeleteApto';
 import { useParams } from 'react-router-dom';
+import "../styles/RedApto.css";
 
 function RedApto() {
     // Obtenemos el id del apartamento de la URL
@@ -97,12 +98,24 @@ function RedApto() {
         actualizarNombre();
      };
 
-     if(infoApto==0){
+    let apartaInfo = []
+
+    if(infoApto==0){
         console.log('');
     }else{
-        infoApto.forEach(element => delete element.id);
-        infoApto.forEach(element => delete element.idapto);
+        let infoApartamento = JSON.parse(JSON.stringify(infoApto))
+        console.log(infoApartamento);
+        infoApartamento.forEach(element => delete element.id);
+        infoApartamento.forEach(element => delete element.apto);
+        infoApartamento.forEach(element => delete element.idapto);
+        apartaInfo = infoApartamento
     }
+
+    console.log(apartaInfo)
+
+
+    console.log(infoApto);
+
     const handleKeyPress = (event) => {
         if (event.key === 'Enter') {
           event.preventDefault();
@@ -161,17 +174,17 @@ function RedApto() {
             {/* Apartado de la TABLA para la redistribucion*/}
             <div className='contenedorProductos'>
             {(
-                infoApto == 0 ? (
+                apartaInfo == 0 ? (
                     <p>Cargando ...</p> // en caso que no haya cargado 
                 ) : (
-                    Object.keys(infoApto[0]).map((producto) => // se recorre el arreglo para mostrar los elementos
+                    Object.keys(apartaInfo[0]).map((producto) => // se recorre el arreglo para mostrar los elementos
                 (
                     <form style={{display:'flex'}}>
                         <p>{producto}</p>
                         <input
                             type='number'
                             name='dato'
-                            placeholder={infoApto[0][producto]}
+                            placeholder={apartaInfo[0][producto]}
                             onChange={ev => {
                                 setDato(ev.target.value); 
                                 setProductoId(producto);    // productoId <-- nombre del producto

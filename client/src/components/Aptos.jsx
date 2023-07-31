@@ -3,6 +3,7 @@ import BtnApto from './BtnApto';
 import AddApto from './AddApto';
 import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import "../styles/Aptos.css"
 
 function Aptos() {
 
@@ -39,7 +40,7 @@ function Aptos() {
     }, []);
 
   return (
-    <div className="App">
+    <div className="Aptos">
        {estadoDialog && <AddApto mostrarAddApto={mostrarAddApto} />}
       <h1>Redistribución</h1>
       <Link to={{pathname: `/${ingruma}/productos`}} > 

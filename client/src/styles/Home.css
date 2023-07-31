@@ -1,0 +1,82 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: #010101;
+}
+
+.Home {
+    height: 800px;
+    width: 100%;
+    background-position: right right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+section{
+    background-color: transparent;
+}
+
+.biancatext{
+    color: blue;
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 1rem;
+
+    /* BIANCA" */
+
+    position: absolute;
+    width: 103px;
+    height: 22px;
+    left: 0px;
+    padding-top: 1rem;
+    
+    font-weight: bolder;
+    font-size: 24px;
+    line-height: 89.9%;
+/* identical to box height, or 22px */
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(94.88deg, #FFFFFF 7.41%, #6C7BFF 29.01%, #FF00D6 50.56%, #0500FF 77.14%, #6AB8FF 99.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+
+}
+
+.textoHome {
+    color: white;
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    padding-left: 1rem;
+    font-size: 3rem;
+    padding-top: 20rem;
+    line-height: 3rem;
+}
+
+.ButtomsHome{
+    margin-top: 2rem;
+    margin-left: 1rem;
+}
+
+.Buttoms {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    width: 20rem;
+    margin-top: 1rem;
+    display: block;
+    color: white;
+    background-color: #1D1B26;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    padding-left: 2rem;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    display: flex;
+}

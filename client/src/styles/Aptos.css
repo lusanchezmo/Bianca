@@ -1,0 +1,112 @@
+.textRedi{
+    color: white;
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2.5rem;
+    padding-top: 7rem;
+    line-height: 3rem;
+}
+
+.sectionPro {
+    display: grid;
+    place-items: center;
+}
+
+.ButtomPro {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    width: auto;
+    padding-right: 3rem;
+    margin-top: 1rem;
+    display: block;
+    color: white;
+    background-color: #1D1B26;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    font-size: 1rem;
+    padding-left: 2rem;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    display: flex;
+}
+
+.aptosText{
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+
+    /* APTOS */
+
+    width: auto;
+    height: 22px;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    
+    font-weight: bolder;
+    font-size: 40px;
+    line-height: 89.9%;
+/* identical to box height, or 22px */
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(94.88deg, #FFFFFF 7.41%, #6C7BFF 29.01%, #FF00D6 50.56%, #0500FF 77.14%, #6AB8FF 99.97%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btnApto {
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    width: auto;
+    margin-top: 0.5rem;
+    display: block;
+    color: white;
+    background-color: #1D1B26;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 4rem;
+    padding-right: 2rem;
+    font-size: 1rem;
+    padding-left: 2rem;
+    border: none;
+    border-radius: 20px;
+    text-decoration: none;
+    display: flex;
+}
+
+.addAptobtn {
+    margin-top: 1rem;
+    width: 2rem; 
+    height: 2rem; 
+    background: red;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    border-radius: 10px;
+    border: none;
+    color: white;
+    font-weight: 400;
+}
+
+.textMakeRedi {
+    margin-top: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+}
+
+.btnRedistribution {
+    margin-top: 1rem;
+    background: linear-gradient(94.88deg, #FFFFFF 7.41%, #6C7BFF 29.01%, #FF00D6 50.56%, #0500FF 77.14%, #6AB8FF 99.97%);
+    padding: 1rem 3rem;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    border: none;
+}

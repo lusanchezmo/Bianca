@@ -13,6 +13,11 @@
     place-items: center;
 }
 
+.Aptos {
+    display: grid;
+    place-items: center;
+}
+
 .ButtomPro {
     font-family: 'Inter', sans-serif;
     font-family: 'Montserrat', sans-serif;
@@ -109,4 +114,71 @@
     font-family: 'Montserrat', sans-serif;
     color: white;
     border: none;
+}
+
+.addApto {
+    display: grid;
+    place-items: center;
+    border-style: double;
+    border-color: #707070;
+    border-radius: 20px;
+    width: 90%;
+    background-color: red;
+}
+
+.close {
+    background-color: transparent;
+    margin-top: 0.7rem;
+    margin-bottom: 0.5rem;
+    width: 10%;
+
+}
+
+.addText {
+    color: white;
+    background-color: transparent;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    padding-bottom: 0.7rem;
+}
+
+.container {
+    align-items: left;
+    width: 90%;
+    border-radius: 20px;
+}
+
+.datosContainer {
+    display: flex;
+}
+
+.nameDatos {
+    width: 60%;
+    background-color: white;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+}
+
+.inputDatos {
+    padding-left: 1rem;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    width: 40%;
+    background:  #1D1B26;
+    color: white;
+}
+
+.addButtom {
+    margin-top: 0.7rem;
+    margin-bottom: 0.3rem;
+    width: 4rem;
+    color: white;
+    background-color: #1D1B26;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    border: none;
+    height: 2rem;
+    border-radius: 20px;
 }

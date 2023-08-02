@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import "../styles/RedApto.css"
 
 function DeleteApto() {
     let { ingruma } = useParams();
@@ -19,12 +20,14 @@ function DeleteApto() {
 
 
     return(
-        <div style={{position:'fixed', backgroundColor:'red', zIndex:3}}>
-        <h1>Estas seguro que deseas eliminar este apto</h1>
-        <button >Cancelar</button>
-        <Link to={{pathname: `/${ingruma}`}} >
-            <button onClick={deleteApto} >Eliminar</button>
+        <div className="deleteApto" style={{position:'fixed', zIndex:3}}>
+        <h1 className="deleteText">¿Estas seguro que deseas eliminar este apto?</h1>
+        <section className="botones" style={{display: 'flex'}}>
+        <button className="btnCancelar" >Cancelar</button>
+        <Link style={{background: 'transparent'}} to={{pathname: `/${ingruma}`}} >
+            <button className="btnCancelar" onClick={deleteApto} >Eliminar</button>
         </Link>
+        </section>
         </div>
     )
 }

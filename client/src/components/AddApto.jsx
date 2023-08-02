@@ -54,7 +54,7 @@ function AddApto() {
             </div>
             </section>
 
-            <input className="addButtom" type="submit" value="Listo" onClick={enviarDatos} />
+            <input className="addButtom" type="submit" value="Añadir" onClick={enviarDatos} />
         </form>
     )
 }

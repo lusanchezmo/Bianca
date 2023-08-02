@@ -3,6 +3,9 @@ import React, {useState, useEffect } from 'react';
 import DeleteApto from './DeleteApto';
 import { useParams } from 'react-router-dom';
 import "../styles/RedApto.css";
+import { Link } from 'react-router-dom';
+import cesta from '../Images/cesta.png';
+import lapiz from '../Images/lapiz.png'
 
 function RedApto() {
     // Obtenemos el id del apartamento de la URL
@@ -142,26 +145,27 @@ function RedApto() {
 
             {/* Apartado de nombre del apto y modificar nombre */}
             {estadoDialog && <DeleteApto mostrarDeleteApto={mostrarDeleteApto} />}
-            <button onClick={() => (mostrarDeleteApto())} >Eliminar</button>
-            <div>
+            <div className='NameAptoContainer'>
+            <button style={{border: 'none'}} onClick={() => (mostrarDeleteApto())} ><img src={cesta} style={{width: '2rem'}}/></button>
                 <p>{(
                     infoApto == 0 ? (
                     <p>Cargando ...</p> // en caso que no haya cargado 
                 ) : (
                 infoApto.map((apto) => // se recorre el arreglo para mostrar los elementos
                 (
-                    <p>{apto.apto}</p>
+                    <p className='nameApto'>{apto.apto}</p>
                 )
                 )
             ))
             }</p>
-                <button onClick={toggleDiv1}>editar</button>
+                <button style={{border: 'none'}} onClick={toggleDiv1}><img src={lapiz} style={{width: '2.4rem'}} /></button>
                 {mostrarDiv1 && (
                     <div className='showhide1'>
                         <input
+                            style={{color: 'white'}}
                             className='cambioNombre'
                             type="text"
-                            placeholder="Nombre"
+                            placeholder="Nuevo nombre"
                             value={nuevoNombre}
                             onChange={handleChange1}
                             name='texto' />
@@ -180,8 +184,9 @@ function RedApto() {
                     Object.keys(apartaInfo[0]).map((producto) => // se recorre el arreglo para mostrar los elementos
                 (
                     <form style={{display:'flex'}}>
-                        <p>{producto}</p>
+                        <p className='nombreProducto'>{producto}</p>
                         <input
+                            className='entradaDato'
                             type='number'
                             name='dato'
                             placeholder={apartaInfo[0][producto]}
@@ -197,6 +202,10 @@ function RedApto() {
             ))
             }
             </div>
+
+            <Link to={{pathname: `/${ingruma}`}}>
+                <button className='botonListo'>Listo</button>
+            </Link>
 
         </div>
     );

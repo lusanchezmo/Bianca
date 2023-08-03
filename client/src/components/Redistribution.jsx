@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import "../styles/Redistribution.css";
+import fondo from '../Images/BackRedi.png';
 
 function Redistribution() {
 
@@ -88,7 +90,7 @@ function Redistribution() {
             y+=1
         }
         if(y!=0){
-            let resultado = (`${aptosProductos[i][0]} va por ${y} de ${el} al ${aptosProductos[j][0]}`);
+            let resultado = (`${aptosProductos[i][0]} va por ${y} de ${el} al ${aptosProductos[j][0]} `);
             redistribucion.push(resultado);
             console.log(resultado);
         }
@@ -110,15 +112,17 @@ function Redistribution() {
     console.log(redistribucion);
     console.log(apartamentos);
 
+    console.log(redistribucionOrdenada);
 
     ///////////////
     apartamentos.map(ap => {
-
+    let arr = []
     redistribucion.map(redi => {
         if(redi.split(" ",1) == ap){
-            redistribucionOrdenada.push(redi);
+            arr.push(redi);
         }
     })
+    redistribucionOrdenada.push(arr);
 
     })
     /////////////////////
@@ -140,7 +144,16 @@ function Redistribution() {
                     <p>Cargando ...</p> // en caso que no haya cargado 
                 ) : (
                     redistribucionOrdenada.map(redi => (
-                        <p>{redi}</p>
+                        <div className='rediXapto' style={{backgroundImage: `url(${fondo})`, backgroundSize: '20rem'}}>
+                            {(redi == 0 ? console.log('') : (
+                            <div className='contenedorInicio'>
+                                <h2 className='nameAptoText'>{redi[0].split(' ',1)}</h2>
+                                <p className='vaPor'>va por</p>
+                            </div>))}
+                            {redi.map((element) => (
+                                <p className='text'>{element.slice(element.indexOf("por")+3,-1)}</p>
+                            ))}
+                        </div>
                     ))
             ))
             }

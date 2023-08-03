@@ -1,0 +1,46 @@
+.contenedorProductos {
+    display: grid;
+    place-content: center;
+    color: white;
+    padding-bottom: 3rem;
+    width: 100%;
+}
+
+.rediXapto {
+    position: relative;
+    width: 20rem;
+    margin-top: 1rem;
+    background-color: red;
+    padding: 0.7rem 0.5rem;
+    display: grid;
+    place-content: center;
+}
+
+.text {
+    margin-top: 0.5rem;
+    background-color: black;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 50px;
+    margin-left: 0.2rem;
+}
+
+.contenedorInicio {
+    background-color: transparent;
+    margin-bottom: 1rem;
+}
+
+.nameAptoText {
+    font-size: 7rem;
+    background: transparent;
+    text-align: center;
+    margin-bottom: 0rem;
+    padding-bottom: 0rem;
+}
+
+.vaPor {
+    background-color: transparent;
+    margin-top: 0px;
+    text-align: center;
+}

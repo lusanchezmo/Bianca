@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "../styles/Products.css"
+import cesta from "../Images/cesta.png"
 
 function Products() {
     
@@ -14,6 +16,7 @@ function Products() {
     const [nuevoNombre, setNuevoNombre] = useState('');       // nuevoNombre <-- se almacena el nuevo nombre
     const actualizarNombre = () => {
         addProduct();         // <-- llama a la API que cambia el nombre en la bd
+        window.location.reload();
     };
     // funcion que almacena el nuevo nombre
     const handleChange1 = (event) => {
@@ -80,7 +83,9 @@ function Products() {
         }
 
     return(
-        <div>
+        <div className="Products">
+          <h1 className="textProducts">Productos a redistribuir</h1>
+          <div className="contenedorProductos">
             {
               (productos === 0 ? (
                 <p>Cargando ...</p> // en caso que no haya cargado 
@@ -88,16 +93,19 @@ function Products() {
                 productos.map((producto,indice) => // se recorre el arreglo para mostrar los elementos
                 (   
                     <div className="producto" style={{display: 'flex'}} key={indice}>
-                      <p>{producto}</p>
-                      <button onClick={ev => {
+                      <p className="nameProduct">{producto}</p>
+                      <button style={{border: 'none'}} onClick={ev => {
                         deleteProduct(producto);
-                      }} >Eliminar</button>
+                        window.location.reload();
+                      }} ><img src={cesta} alt="cesta de basura" style={{width: '1.2rem', marginLeft: '0.7rem' }} /></button>
                     </div>
                 )
                 )
             ))
             }
-            <button onClick={toggleDiv1}>Añadir producto</button>
+          </div>
+          <section className="botonAddProducto">
+            <button className="addProducto" onClick={toggleDiv1}>Añadir producto</button>
             {mostrarDiv1 && (
               <div className='showhide1'>
               <input
@@ -110,6 +118,7 @@ function Products() {
               <button className='guardarNombre' onClick={handleClickNombre}>Guardar</button>
               </div>
             )}
+          </section>
         </div>
     )
 }

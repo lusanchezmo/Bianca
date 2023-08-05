@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "../styles/Redistribution.css";
-import fondo from '../Images/BackRedi.png';
+import fondo from '../Images/background.png';
 
 function Redistribution() {
 
@@ -13,7 +13,7 @@ function Redistribution() {
         const options = {
             method: "GET"
         };
-        let url = new URL("http://localhost:5000/redistribution/"+ingruma);
+        let url = new URL("https://backbianca-production.up.railway.app/redistribution/"+ingruma);
         fetch(url, options) // se hace la consulta 
             .then(response => response.text()) // se obtiene el cuerpo de la respuesta
             .then(data => {

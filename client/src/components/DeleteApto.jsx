@@ -11,7 +11,7 @@ function DeleteApto() {
         const options = {
             method: "DELETE"
         };
-        let url = new URL("http://localhost:5000/deleteApto/"+id+"/"+ingruma);
+        let url = new URL("https://backbianca-production.up.railway.app/deleteApto/"+id+"/"+ingruma);
         fetch(url, options) // se hace la consulta 
             .then(response => response.text()) // se obtiene el cuerpo de la respuesta
             .then(data => {

@@ -1,5 +1,6 @@
 import './App.css';
-import {BrowserRouter, Route, Routes} from "react-router-dom";
+import React, {Component} from 'react';
+import {BrowserRouter ,Route, Routes} from "react-router-dom";
 import Home from './components/Home';
 import Aptos from './components/Aptos';
 import NotFound from './components/NotFound';
@@ -9,15 +10,15 @@ import Products from './components/Products';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/FrontBianca'>
       <Routes>
-        <Route path='/FrontBianca' element={<Home/>} />
-        <Route path='/:ingruma' element={<Aptos/>} />
-        <Route path='/:ingruma/redapto' element={<RedApto/>} />
-        <Route path='/redistribution/:ingruma' element={<Redistribution/>} />
+        <Route path='/' element={<Home/>} />
+        <Route path=':ingruma' element={<Aptos/>} />
+        <Route path=':ingruma/redapto' element={<RedApto/>} />
+        <Route path='redistribution/:ingruma' element={<Redistribution/>} />
         <Route path=':ingruma/productos' element={<Products/>} />
         <Route path='*' element={<NotFound />} />
-      </Routes>
+        </Routes>
     </BrowserRouter>
   );
 }

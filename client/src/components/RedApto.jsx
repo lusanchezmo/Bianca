@@ -31,7 +31,7 @@ function RedApto() {
             const options = {
                 method: "PUT"
             };
-            let url = new URL("http://localhost:5000/changeProductAmount/"+id+"/"+productoId+"/"+dato+"/"+ingruma);
+            let url = new URL("https://backbianca-production.up.railway.app/changeProductAmount/"+id+"/"+productoId+"/"+dato+"/"+ingruma);
             fetch(url, options) // se hace la consulta 
                 .then(response => response.text()) // se obtiene el cuerpo de la respuesta
                 .then(data => {
@@ -51,7 +51,7 @@ function RedApto() {
         const options = {
             method: "POST"
         };
-        let url = new URL("http://localhost:5000/getAptoById/"+id+"/"+ingruma);
+        let url = new URL("https://backbianca-production.up.railway.app/getAptoById/"+id+"/"+ingruma);
         fetch(url, options) // se hace la consulta 
             .then(response => response.text()) // se obtiene el cuerpo de la respuesta
             .then(data => {
@@ -83,7 +83,7 @@ function RedApto() {
         const options = {
             method: "PUT"
         };
-        let url = new URL("http://localhost:5000/changeName/"+id+"/"+nuevoNombre+"/"+ingruma);
+        let url = new URL("https://backbianca-production.up.railway.app/changeName/"+id+"/"+nuevoNombre+"/"+ingruma);
         fetch(url, options) // se hace la consulta 
             .then(response => response.text()) // se obtiene el cuerpo de la respuesta
             .then(data => {

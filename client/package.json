@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "homepage": "https://lusanchezmo.github.io/FrontBianca/",
+  "homepage": "FrontBianca",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
